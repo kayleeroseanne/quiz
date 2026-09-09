@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 //use DB;
 use App\Models\Informasi;
+use App\Models\Kategori;
 
 class InformasiController extends Controller
 {
@@ -17,13 +18,17 @@ class InformasiController extends Controller
 
     public function create()
     {
-        return view('informasi.create');
+        $kategori = Kategori::all();
+
+            return view('informasi.create', [
+                'kategori' => $kategori
+            ]);
     }
 
     public function simpan(Request $request)
     {
         $request->validate([
-        'nama' => ['required', 'regex:/^[a-zA-Z\s]+$/']
+        'nama' => ['required']
         ]);
         
         $informasi = new Informasi();
@@ -54,7 +59,7 @@ class InformasiController extends Controller
      
 
          $request->validate([
-        'nama' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+        'nama' => ['required'],
         ]);
 
         try { 
