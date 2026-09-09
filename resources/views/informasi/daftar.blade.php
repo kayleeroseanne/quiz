@@ -13,11 +13,12 @@
    @endif
 
     <a href="{{ url('/tambah-informasi') }}">
-        Tambah Kategori
+        Tambah Informasi
     </a>
     <br></br>
     <table border="1">
     <tr>
+        <th>Kategori</th>
         <th>Judul</th>
         <th>Ringkasan</th>
         <th>Isi</th>
@@ -25,10 +26,11 @@
         <th>Status</th>
         <th>Aksi</th>
     </tr>
-    @foreach ($informasis as $data)
+    @foreach ($informasi as $data)
     <tr>
+        <td>{{ $data->kategori->nama}}</td>
         <td>{{ $data->judul }} </td>
-        <td> {{ $data->ringkasan }} </td>
+        <td>{{ $data->ringkasan }} </td>
         <td>{{ $data->isi }} </td>
         <td>{{ $data->sumber }}</td>
         <td>{{ $data->status }} </td>
@@ -43,6 +45,9 @@
             </form>
             <a href="{{ route('informasi.ubah', $data) }}">
                 [UBAH]
+            </a>
+            <a href="{{ route('informasi.show', $data) }}">
+                [DETAIL]
             </a>
         </td>
     </tr>

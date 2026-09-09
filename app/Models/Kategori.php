@@ -3,16 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kategori extends Model
 {
-    protected $fillable = [
-        'nama'
-    ];
+    protected $table = 'kategoris';
 
-    public function informasis(): HasMany
+    public function informasis()
     {
-        return $this->hasMany(Informasi::class);
+        return $this->hasMany(Informasi::class, 'kategori_id');
     }
 }

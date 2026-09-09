@@ -3,21 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Informasi extends Model
 {
-    protected $fillable = [
-        'kategori_id',
-        'judul',
-        'ringkasan',
-        'isi',
-        'sumber',
-        'status'
-    ];
+    protected $table = 'informasis';
 
-    public function kategori(): BelongsTo
+    public function kategori()
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsTo(Kategori::class, 'kategori_id');
     }
 }
