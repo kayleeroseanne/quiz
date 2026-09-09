@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('informasis', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('kategori_id');
+            $table->foreign('kategori_id')->references('id')->on('kategoris');
+            $table->string('judul');
+            $table->text('ringkasan');
+            $table->longText('isi');
+            $table->string('sumber')->nullable();
+            $table->enum('status', ['draft', 'published'])->default('draft');
             $table->timestamps();
         });
     }
